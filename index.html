@@ -210,6 +210,10 @@ let buy = document.getElementById("buy");
 let country_selected = "no";
 let order_but = document.getElementById("order_but");
 let start = document.getElementById("start");
+let coffee_order_add = document.getElementById("coffee_order_add");
+let coffee_order_plus = document.getElementById("coffee_order_plus");
+let coffee_order_minus = document.getElementById("coffee_order_minus");
+let coffee_selected = false;
 let order_form = document.getElementById("order_form");
 let order = document.getElementById("order");
 let order_complete = document.getElementById("order_complete");
@@ -251,6 +255,12 @@ order_but.addEventListener("click", () => {
 country.addEventListener("click", () => {
     order_form.style.display = "none";
     country_select.style.display = "block";
+});
+coffee_order_add.addEventListener("click", () => {
+    coffee_selected = true;
+    coffee_order_plus.style.display = "inline";
+    coffee_order_minus.style.display = "inline";
+    coffee_order_add.style.display = "none";
 });
 russia_country_but.addEventListener("click", () => {
     country_select.style.display = "none";
