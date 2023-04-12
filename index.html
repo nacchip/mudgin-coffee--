@@ -211,7 +211,7 @@ let coffee_order_minus = document.getElementById("coffee_order_minus");
 let coffee_order_count = document.getElementById("coffee_order_count");
 let coffee_order_count_text = document.getElementById("coffee_order_count_text");
 let coffee_selected = false;
-let coffee_order_count = 0;
+let coffee_count = 0;
 let order_form = document.getElementById("order_form");
 let order = document.getElementById("order");
 let order_complete = document.getElementById("order_complete");
@@ -256,7 +256,7 @@ country.addEventListener("click", () => {
 });
 coffee_order_add.addEventListener("click", () => {
     coffee_selected = true;
-    coffee_order_count = 1;
+    coffee_count = 1;
     coffee_order_count_text.innerText = 1;
     coffee_order_plus.style.display = "inline";
     coffee_order_minus.style.display = "inline";
