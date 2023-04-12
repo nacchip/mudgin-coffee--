@@ -118,8 +118,19 @@ input:focus {
 #coffee_order_add, #popcorn_order_add, #cocoa_order_add, #smoothie_order_add {
     background-color: #6ca71a;
     width: 30%;
-    height: 17px;
+    height: 16px;
     font-size: 13px;
+}
+#coffee_order_plus, #coffee_order_minus {
+    height: 8px;  
+    font-size: 13px;  
+    display: none;
+}
+#coffee_order_plus {
+    background-color: #5c50ae;
+}
+#coffee_order_minus {
+    background-color: #f4c60f;
 }
 </style>
 </head>
@@ -136,6 +147,8 @@ input:focus {
 <button id="coffee_order_add">
 Добавить
 </button>
+<button id="coffee_order_plus">+</button>
+<button id="coffee_order_minus">-</button>
 </div>
 <div id="popcorn_order">
 <img src="./img/Pop corn.webp">
