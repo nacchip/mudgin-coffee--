@@ -267,6 +267,15 @@ coffee_order_plus.addEventListener("click", () => {
     coffee_count = coffee_count + 1;
     coffee_order_count_text.innerText = coffee_count;
 });
+coffee_order_minus.addEventListener("click", () => {
+    if (coffee_count == 1) {
+        coffee_count_add.style.display = "block";
+        coffee_count_plus.style.display = "none";
+        coffee_count_minus.style.display = "none";
+    } else {
+        coffee_count = coffee_count - 1;   
+    }
+});
 russia_country_but.addEventListener("click", () => {
     country_select.style.display = "none";
     order_form.style.display = "block";
