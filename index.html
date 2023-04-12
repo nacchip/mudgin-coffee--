@@ -256,7 +256,11 @@ order_but.addEventListener("click", () => {
     else {
         let data = {
             name: user_name,
-            phone: user_phone
+            phone: user_phone,
+            coffee: coffee_selected,
+            coffee_count: coffee_count,
+            popcorn: popcorn_selected,
+            popcorn_count: popcorn_count
         }
     bot.sendData(JSON.stringify(data));
     bot.close();
