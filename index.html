@@ -121,16 +121,16 @@ input:focus {
     height: 30px;
     font-size: 19px;
 }
-#coffee_order_plus, #coffee_order_minus {
+#coffee_order_plus, #coffee_order_minus, #popcorn_order_plus, #popcorn_order_minus {
     height: 30px;  
     width: 15%;
     font-size: 19px;  
     display: none;
 }
-#coffee_order_plus {
+#coffee_order_plus, #popcorn_order_plus {
     background-color: #6ca71a;
 }
-#coffee_order_minus {
+#coffee_order_minus, #popcorn_order_minus {
     background-color: #f40f3e;
 }
 </style>
@@ -156,9 +156,13 @@ input:focus {
 <div id="popcorn_order">
 <img src="./img/Pop corn.webp">
 <div>Попкорн</div>
+<br>
+<p id="popcorn_order_count_text"></p>
 <button id="popcorn_order_add">
 Добавить
 </button>
+<button id="popcorn_order_minus">-</button>
+<button id="popcorn_order_plus">+</button>
 </div>
 <div id="cocoa_order">
 <img src="./img/Сocoa.webp">
@@ -212,7 +216,14 @@ let coffee_order_minus = document.getElementById("coffee_order_minus");
 let coffee_order_count = document.getElementById("coffee_order_count");
 let coffee_order_count_text = document.getElementById("coffee_order_count_text");
 let coffee_selected = false;
-let coffee_count = 0;
+let coffee_count = 0; 
+let popcorn_order_add = document.getElementById("popcorn_order_add");
+let popcorn_order_plus = document.getElementById("popcorn_order_plus");
+let popcorn_order_minus = document.getElementById("popcorn_order_minus");
+let popcorn_order_count = document.getElementById("popcorn_order_count");
+let popcorn_order_count_text = document.getElementById("popcorn_order_count_text");
+let popcorn_selected = false;
+let popcorn_count = 0;
 let order_form = document.getElementById("order_form");
 let order = document.getElementById("order");
 let order_complete = document.getElementById("order_complete");
@@ -277,6 +288,30 @@ coffee_order_minus.addEventListener("click", () => {
     } else {
         coffee_count = coffee_count - 1; 
         coffee_order_count_text.innerText = coffee_count;  
+    }
+});
+popcorn_order_add.addEventListener("click", () => {
+    popcorn_selected = true;
+    popcorn_count = 1;
+    popcorn_order_count_text.innerText = 1;
+    popcorn_order_plus.style.display = "inline";
+    popcorn_order_minus.style.display = "inline";
+    popcorn_order_add.style.display = "none";
+});
+popcorn_order_plus.addEventListener("click", () => {
+    popcorn_count = popcorn_count + 1;
+    popcorn_order_count_text.innerText = popcorn_count;
+});
+popcorn_order_minus.addEventListener("click", () => {
+    if (popcorn_count == 1) {
+        popcorn_selected = false;
+        popcorn_order_add.style.display = "block";
+        popcorn_order_count_text.innerText = " ";
+        popcorn_order_plus.style.display = "none";
+        popcorn_order_minus.style.display = "none";
+    } else {
+        popcorn_count = popcorn_count - 1; 
+        popcorn_order_count_text.innerText = popcorn_count;  
     }
 });
 russia_country_but.addEventListener("click", () => {
