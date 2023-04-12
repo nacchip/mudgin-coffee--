@@ -269,6 +269,7 @@ coffee_order_plus.addEventListener("click", () => {
 });
 coffee_order_minus.addEventListener("click", () => {
     if (coffee_count == 1) {
+        coffee_selected = false;
         coffee_order_add.style.display = "block";
         coffee_order_count_text.innerText = " ";
         coffee_order_plus.style.display = "none";
