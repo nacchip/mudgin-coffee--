@@ -121,16 +121,16 @@ input:focus {
     height: 30px;
     font-size: 19px;
 }
-#coffee_order_plus, #coffee_order_minus, #popcorn_order_plus, #popcorn_order_minus {
+#coffee_order_plus, #coffee_order_minus, #popcorn_order_plus, #popcorn_order_minus, #cocoa_order_plus, #cocoa_order_minus {
     height: 30px;  
     width: 15%;
     font-size: 19px;  
     display: none;
 }
-#coffee_order_plus, #popcorn_order_plus {
+#coffee_order_plus, #popcorn_order_plus, #cocoa_order_plus {
     background-color: #6ca71a;
 }
-#coffee_order_minus, #popcorn_order_minus {
+#coffee_order_minus, #popcorn_order_minus, #cocoa_order_minus {
     background-color: #f40f3e;
 }
 </style>
@@ -167,9 +167,12 @@ input:focus {
 <div id="cocoa_order">
 <img src="./img/Сocoa.webp">
 <div>Какао</div>
+<p id="cocoa_order_count_text"></p>
 <button id="cocoa_order_add">
 Добавить
 </button>
+<button id="cocoa_order_minus">-</button>
+<button id="cocoa_order_plus">+</button>
 </div>
 <div id="smoothie_order">
 <img src="./img/Smoothie.webp">
@@ -224,6 +227,13 @@ let popcorn_order_count = document.getElementById("popcorn_order_count");
 let popcorn_order_count_text = document.getElementById("popcorn_order_count_text");
 let popcorn_selected = false;
 let popcorn_count = 0;
+let cocoa_order_add = document.getElementById("cocoa_order_add");
+let cocoa_order_plus = document.getElementById("cocoa_order_plus");
+let cocoa_order_minus = document.getElementById("cocoa_order_minus");
+let cocoa_order_count = document.getElementById("cocoa_order_count");
+let cocoa_order_count_text = document.getElementById("cocoa_order_count_text");
+let cocoa_selected = false;
+let cocoa_count = 0;
 let order_form = document.getElementById("order_form");
 let order = document.getElementById("order");
 let order_complete = document.getElementById("order_complete");
@@ -261,6 +271,8 @@ order_but.addEventListener("click", () => {
             coffee_count: coffee_count,
             popcorn: popcorn_selected,
             popcorn_count: popcorn_count
+            cocoa: cocoa_selected,
+            cocoa_count: cocoa_count
         }
     bot.sendData(JSON.stringify(data));
     bot.close();
@@ -316,6 +328,30 @@ popcorn_order_minus.addEventListener("click", () => {
     } else {
         popcorn_count = popcorn_count - 1; 
         popcorn_order_count_text.innerText = popcorn_count;  
+    }
+});
+cocoa_order_add.addEventListener("click", () => {
+    cocoa_selected = true;
+    cocoa_count = 1;
+    cocoa_order_count_text.innerText = 1;
+    cocoa_order_plus.style.display = "inline";
+    cocoa_order_minus.style.display = "inline";
+    cocoa_order_add.style.display = "none";
+});
+cocoa_order_plus.addEventListener("click", () => {
+    cocoa_count = cocoa_count + 1;
+    cocoa_order_count_text.innerText = cocoa_count;
+});
+cocoa_order_minus.addEventListener("click", () => {
+    if (cocoa_count == 1) {
+        cocoa_selected = false;
+        cocoa_order_add.style.display = "block";
+        cocoa_order_count_text.innerText = " ";
+        cocoa_order_plus.style.display = "none";
+        cocoa_order_minus.style.display = "none";
+    } else {
+        cocoa_count = cocoa_count - 1; 
+        cocoa_order_count_text.innerText = cocoa_count;  
     }
 });
 russia_country_but.addEventListener("click", () => {
