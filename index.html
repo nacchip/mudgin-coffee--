@@ -214,6 +214,7 @@ input:focus {
 </div>
 <div id="cart">
 <div id="coffee_cart">
+<p>Ваш заказ:</p><br>
 <p id="coffee_cart_text"></p>
 <button id="cart_but">Оформить заказ</button>
 </div>
@@ -275,7 +276,16 @@ order_but.addEventListener("click", () => {
     order_form.style.display = "none";
     cart.style.display = "block";
     if (coffee_selected == true) {
-        coffee_cart_text.innerText = "Кофе * " +  coffee_count     
+        coffee_cart_text.innerText = coffee_cart_text.innerText + "\nКофе * " +  coffee_count     
+    }
+    if (popcorn_selected == true) {
+        popcorn_cart_text.innerText = coffee_cart_text.innerText + "\nПопкорн * " +  popcorn_count     
+    }
+    if (cocoa_selected == true) {
+        cocoa_cart_text.innerText = coffee_cart_text.innerText + "\nКакао * " +  cocoa_count     
+    }
+    if (smoothie_selected == true) {
+        smoothie_cart_text.innerText = coffee_cart_text.innerText + "\nСмузи * " +  smoothie_count     
     }
 });
 cart_but.addEventListener("click", () => {
