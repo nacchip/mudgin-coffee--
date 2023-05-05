@@ -137,7 +137,7 @@ input:focus {
 </head>
 <body>
 <div id="start">
-<h1>Mudgin Coffee</h1>
+<h1>Mudgin Coffee</h1> 
 <button id="buy">Начать делать заказ</button>
 </div>
 <div id="order">
@@ -203,7 +203,13 @@ input:focus {
 <input type="text" placeholder="Введите имя" id="user_name">
 <button id="country">Выберите вашу страну</button>
 <input type="tel" placeholder="Введите номер телефона" id="user_phone" class="phone">
-<button id="order_but">Оформить заказ</button>
+<button id="order_but">Далее</button>
+</div>
+<div id="cart">
+<div id="coffee_cart">
+<p id="coffee_cart_text"></p>
+<button id="cart_but">Оформить заказ</button>
+</div>
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
@@ -213,6 +219,9 @@ let bot = window.Telegram.WebApp;
 let buy = document.getElementById("buy");
 let country_selected = "no";
 let order_but = document.getElementById("order_but");
+let cart = document.getElementById("cart");
+let cart_but = document.getElementById("cart_but");
+let coffee_cart_text = document.getElementById("coffee_cart_text");
 let start = document.getElementById("start");
 let coffee_order_add = document.getElementById("coffee_order_add");
 let coffee_order_plus = document.getElementById("coffee_order_plus");
@@ -256,6 +265,13 @@ order_complete.addEventListener("click", () => {
     order_form.style.display = "block";
 });
 order_but.addEventListener("click", () => {
+    order_form.style.display = "none";
+    cart.style.display = "block";
+    if (coffee_selected == true) {
+        coffee_cart_text.innerText = "Кофе * " +  coffee_count     
+    }
+});
+cart_but.addEventListener("click", () => {
     let user_name = document.getElementById("user_name").value;
     let user_phone = document.getElementById("user_phone").value;
     if (user_name.length < 4) {
